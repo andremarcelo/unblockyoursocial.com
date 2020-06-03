@@ -2,24 +2,34 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 margin-t-20">
-                <h4>HIRIC</h4>
+                <h4>unblockyoursocial.com</h4>
                 <div class="text-muted margin-t-20">
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact us</a></li>
+                      <li>
+                        <a data="id_home"  [ngx-scroll-to]="'#home'">Home</a>
+                      </li>
+                      <li>
+                        <a data="id_features"  [ngx-scroll-to]="'#features'">Features</a>
+                      </li>
+                      <li>
+                        <a data="id_services"  [ngx-scroll-to]="'#services'">Services</a>
+                      </li>
+                      <li >
+                        <a data="id_pricing"  [ngx-scroll-to]="'#pricing'" >Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a data="id_contact" [ngx-scroll-to]="'#contact'">Contact</a>
+                      </li>
                     </ul>
                 </div>
             </div>
+
             <div class="col-lg-3 margin-t-20">
                 <h4>Information</h4>
                 <div class="text-muted margin-t-20">
                     <ul class="list-unstyled footer-list">
                         <li><a href="#">Terms & Condition</a></li>
                         <li><a href="#">About us</a></li>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Bookmarks</a></li>
                     </ul>
                 </div>
             </div>
