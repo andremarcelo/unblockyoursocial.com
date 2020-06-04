@@ -12,6 +12,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent  },
   { path: 'password-forget', component: PasswordForgetComponent  },
   { path: '', pathMatch: 'full', redirectTo: '' }, // see redirect not found page
+  { path: 'admin', loadChildren: () => import('./admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) },
+  //{ path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+
 ];
 
 @NgModule({
