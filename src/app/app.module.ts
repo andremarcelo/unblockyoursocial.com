@@ -14,7 +14,7 @@ import { PasswordForgetComponent } from './password-forget/password-forget.compo
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PasswordForgetComponent
+    PasswordForgetComponent,
   ],
   imports: [
     BrowserModule,
