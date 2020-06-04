@@ -28,6 +28,7 @@
     "@nicky-lenaers/ngx-scroll-to": "^2.0.0",
     "angular-particle": "^1.0.4",
     "core-js": "^2.5.4",
+    "http-server": "^0.12.3",
     "ng-animate": "^0.3.4",
     "ng-simple-slideshow": "^1.2.9",
     "ngx-scrollspy": "^1.2.1",
