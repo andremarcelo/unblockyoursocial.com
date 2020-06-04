@@ -5,14 +5,13 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PasswordForgetComponent } from './password-forget/password-forget.component';
-import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   { path: '', component: LayoutComponent, loadChildren: './pages/pages.module#PagesModule' },
   { path: 'login', component: LoginComponent  },
   { path: 'register', component: RegisterComponent  },
   { path: 'password-forget', component: PasswordForgetComponent  },
-  { path: 'client', component: AdminComponent  }
+  { path: '', pathMatch: 'full', redirectTo: '' }, // see redirect not found page
 ];
 
 @NgModule({
