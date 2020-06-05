@@ -12,13 +12,13 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent  },
   { path: 'password-forget', component: PasswordForgetComponent  },
   { path: '', pathMatch: 'full', redirectTo: '' }, // see redirect not found page
-  { path: 'admin', loadChildren: () => import('./admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) },
+  { path: 'client', loadChildren: () => import('./admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) },
   //{ path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
