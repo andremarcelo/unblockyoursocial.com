@@ -70,7 +70,7 @@
               "browserTarget": "hiric:build:production"
             },
             "dev": {
-              "browserTarget": "hiric:build:dev"
+              "browserTarget": "hiric:build"
             }
           }
         },
@@ -125,6 +125,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "hiric:serve:production"
+            },
+            "dev": {
+              "browserTarget": "hiric:build"
             }
           }
         },
