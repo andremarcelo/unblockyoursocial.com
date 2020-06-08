@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
     constructor(        private authenticationService: AuthenticationService, public alertService: AlertService, private router: Router) {
         this.user = new User();
         this.validatorClass = new CONST();
-        console.log(this.authenticationService.currentUserValue.token, 'test');
-        if (this.authenticationService.currentUserValue.token !== undefined) {
+        console.log(this.authenticationService.currentUserValue, 'test');
+        if (this.authenticationService!=null && this.authenticationService.currentUserValue !== null) {
             this.router.navigate(['/client']);
         }
     }
@@ -62,10 +62,10 @@ export class LoginComponent implements OnInit {
             console.log(  this.user);
             this.authenticationService.login(this.user.email , this.user.password ).subscribe((user:User) => {
                 this.user = user;
-                if (this.user.status  === 'error') {
-                    this.alertService.error('Login error\n', this.options);
-                } else {
+                if (this.user!==null && this.user.status  !== 'error') {
                     this.router.navigate(['client']);
+                } else {
+                    this.alertService.error('Login error\n', this.options);
                 }
             });
         }
