@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   dev : true,
-  local : false
+  local : false,
+  apiUrl: 'https://dev-api.unblockyoursocial.com/api/'
 };
 
 /*

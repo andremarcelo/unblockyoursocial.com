@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {User} from "../User";
-import {CONST} from "../CONST";
-import { ApiService } from '../api.service';
+import {User} from "../_models/user";
+import {CONST} from "../_models/CONST";
 import { AlertService } from '../_alert';
 import { Router} from '@angular/router';
+import { first } from 'rxjs/operators';
 
+import { AuthenticationService } from './../_services';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -19,9 +20,13 @@ export class LoginComponent implements OnInit {
         autoClose: true,
         keepAfterRouteChange: false
     };
-    constructor(private apiService: ApiService, public alertService: AlertService, private router: Router) {
+    constructor(        private authenticationService: AuthenticationService, public alertService: AlertService, private router: Router) {
         this.user = new User();
         this.validatorClass = new CONST();
+        console.log(this.authenticationService.currentUserValue, 'test');
+        if (this.authenticationService.currentUserValue) {
+            this.router.navigate(['/client']);
+        }
     }
 
     ngOnInit() {
@@ -55,7 +60,7 @@ export class LoginComponent implements OnInit {
             this.user.email =  this.formdata.get('email').value;
             this.user.password =  this.formdata.get('password').value;
             console.log(  this.user);
-            this.apiService.login(this.user).subscribe((user:User) => {
+            this.authenticationService.login(this.user.email , this.user.password ).subscribe((user:User) => {
                 this.user = user;
                 if (this.user.status  === 'error') {
                     this.alertService.error('Login error\n', this.options);
