@@ -15,8 +15,6 @@ export class LoginComponent implements OnInit {
     formdata;
     user:  User;
     validatorClass: CONST;
-    apiService : ApiService;
-    alertService : AlertService;
     public options = {
         autoClose: true,
         keepAfterRouteChange: false
@@ -66,5 +64,6 @@ export class LoginComponent implements OnInit {
                 }
             });
         }
+
     }
 }
