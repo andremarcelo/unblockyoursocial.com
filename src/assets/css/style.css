@@ -31,6 +31,9 @@
    1.BASIC
    ========== */
 
+.html-class {
+    background: white !important;
+}
 body {
     font-family: 'Rubik', sans-serif;
     overflow-x: hidden !important;

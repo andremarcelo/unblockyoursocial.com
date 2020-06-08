@@ -63,12 +63,11 @@ export class LoginComponent implements OnInit {
             this.authenticationService.login(this.user.email , this.user.password ).subscribe((user:User) => {
                 this.user = user;
                 if (this.user!==null && this.user.status  !== 'error') {
-                    this.router.navigate(['/client']).then();
+                    this.router.navigate(['client']).then();
                 } else {
                     this.alertService.error('Login error\n', this.options);
                 }
             });
-
         }
 
     }
