@@ -17,6 +17,11 @@ class AuthController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
             $success['token'] =  $user->createToken('LaraPassport')->accessToken;
+            $success['name'] = $user->name;
+            $success['email'] = $user->email;
+            $success['role'] = $user->role;
+            $success['package'] = $user->package;
+            $success['description'] = $user->description;
             return response()->json([
                 'status' => 'success',
                 'data' => $success

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthenticationService } from './../../../_services';
+import { User } from './../../../_models';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   SidebarClass: string;
 
-  constructor() { }
+  currentUser: User;
+  constructor(
+      private router: Router,
+      private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x.data);
+    console.log(this.currentUser);
+  }
 
   ngOnInit() {
     this.SidebarClass = 'sidebar-right';

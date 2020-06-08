@@ -1,8 +1,8 @@
 <nav class="sidebar">
   <div class="list-group">
-      <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-          <i class="fa fa-fw fa-dashboard"></i>
-          <span>Summary</span>
+      <a routerLink="/client" [routerLinkActive]="['router-link-active']" class="list-group-item">
+          <i class="mdi mdi-desktop-mac"></i>
+          <span> Summary</span>
       </a>
     <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-fw fa-dashboard"></i>
@@ -36,7 +36,7 @@
       <i class="fa fa-fw fa-dashboard"></i>
       <span>View users</span>
     </a>
-    <a  (click)="logout()" class="list-group-item">
+    <a (click)="logout()" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-fw fa-dashboard"></i>
       <span>Logout</span>
     </a>
