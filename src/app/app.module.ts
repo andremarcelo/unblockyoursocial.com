@@ -11,7 +11,7 @@ import { PasswordForgetComponent } from './password-forget/password-forget.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertModule } from './_alert';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common'; // see this after
 @NgModule({
   declarations: [
     AppComponent,
