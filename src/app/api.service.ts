@@ -14,10 +14,10 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
 
     if (environment.production) {
-      this.PHP_API_SERVER  = 'https://unblockyoursocial.com';
+      this.PHP_API_SERVER  = 'https://api.unblockyoursocial.com';
     }
     if (environment.dev) {
-      this.PHP_API_SERVER  = 'https://kl23j4pkj.unblockyoursocial.com';
+      this.PHP_API_SERVER  = 'https://dev-api.unblockyoursocial.com';
     }
   }
 
