@@ -68,6 +68,9 @@
           "configurations": {
             "production": {
               "browserTarget": "hiric:build:production"
+            },
+            "dev": {
+              "browserTarget": "hiric:build:dev"
             }
           }
         },
