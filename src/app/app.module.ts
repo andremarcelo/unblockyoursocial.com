@@ -13,12 +13,14 @@ import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AlertModule } from './_alert';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common'; // see this after
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     PasswordForgetComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

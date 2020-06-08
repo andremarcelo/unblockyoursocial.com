@@ -1,7 +1,7 @@
-$header-background-color: rgb(50,58,149);
+$header-background-color: rgb(6, 91, 250);
 :host {
     .navbar {
-        background-color: $header-background-color;
+        background: linear-gradient( #363795, #005C97);
         .navbar-brand {
             color: #fff;
         }

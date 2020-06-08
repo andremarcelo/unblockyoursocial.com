@@ -14,15 +14,18 @@
   overflow-y: scroll;
   position: relative;
   overflow: hidden;
+  background: white !important;
 }
 @media screen and (max-width: 992px) {
   .full-container {
       margin-left: 0px !important;
+      background: white !important;
   }
 }
 @media print {
   .full-container {
       margin-top: 0px !important;
       margin-left: 0px !important;
+     background: white !important;
   }
 }

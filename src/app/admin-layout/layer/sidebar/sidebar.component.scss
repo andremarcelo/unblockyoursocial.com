@@ -1,4 +1,4 @@
-$sidebar-background-color: rgb(50,58,149);
+$sidebar-background-color: rgb(1, 20, 85);
 .sidebar {
   width: 235px;
   margin-left: -235px;
@@ -11,7 +11,7 @@ $sidebar-background-color: rgb(50,58,149);
     z-index: 1000;
     top: 56px;
     left: 235px;
-    background-color: $sidebar-background-color;
+    background: linear-gradient(to right, #363795, #005C97);
     bottom: 0;
     overflow-x: hidden;
     padding-bottom: 40px;
@@ -24,7 +24,7 @@ $sidebar-background-color: rgb(50,58,149);
     // border-top: 1px solid rgba(255,255,255,0.3);
     .list-group {
         a.list-group-item {
-            background: $sidebar-background-color;
+            background: linear-gradient(to right, #363795, #005C97);
             border: 0;
             border-radius: 0;
             color: #999;
@@ -34,11 +34,11 @@ $sidebar-background-color: rgb(50,58,149);
             }
         }
         a:hover {
-            background: darken($sidebar-background-color, 5%);
+            background: linear-gradient(to right, #363795, #005C97);
             color: #fff;
         }
         a.router-link-active {
-            background: darken($sidebar-background-color, 5%);
+            background: linear-gradient(to right, #363795, #005C97);
             color: #fff;
         }
         .header-fields {
@@ -62,7 +62,7 @@ $sidebar-background-color: rgb(50,58,149);
                 color: #999;
                 text-decoration: none;
                 font-weight: 400;
-                background: $sidebar-background-color;
+                background: linear-gradient(to right, #363795, #005C97);
                 span {
                     position: relative;
                     display: block;
@@ -78,7 +78,7 @@ $sidebar-background-color: rgb(50,58,149);
             }
         }
         .panel-title:hover {
-            background: darken($sidebar-background-color, 5%);
+            background: linear-gradient(to right, #363795, #005C97);
         }
         .panel-collapse {
             border-radious: 0;
@@ -86,7 +86,7 @@ $sidebar-background-color: rgb(50,58,149);
             .panel-body {
                 .list-group-item {
                     border-radius: 0;
-                    background-color: $sidebar-background-color;
+                    background: linear-gradient(to right, #363795, #005C97);
                     border: 0 solid transparent;
                     a {
                         color: #999;
@@ -96,7 +96,7 @@ $sidebar-background-color: rgb(50,58,149);
                     }
                 }
                 .list-group-item:hover {
-                    background: darken($sidebar-background-color, 5%);
+                    background: linear-gradient(to right, #363795, #005C97);
                 }
             }
         }
@@ -173,7 +173,6 @@ $sidebar-background-color: rgb(50,58,149);
         font-size: 23px;
     }
     &:hover {
-        background: darken($sidebar-background-color, 5%);
         color: #fff;
     }
     border-top: 1px solid #999;
@@ -194,4 +193,7 @@ a:hover{
     span {
         display: none;
     }
+}
+html {
+    background: white!important;
 }

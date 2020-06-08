@@ -1,45 +1,45 @@
 <nav class="sidebar">
   <div class="list-group">
-      <a routerLink="/client" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <a routerLink="/client/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
           <i class="mdi mdi-desktop-mac"></i>
           <span> Summary</span>
       </a>
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>Instagram Accounts</span>
+    <a routerLink="/client/accounts" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-instagram"></i>
+      <span> Instagram Accounts</span>
     </a>
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>Your Selfies</span>
+    <a routerLink="/client/selfies" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-face"></i>
+      <span> Your Selfies</span>
     </a>
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>Your email accounts</span>
+    <a routerLink="/client/emails" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-email-open-outline"></i>
+      <span> Your email accounts</span>
     </a>
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>Settings</span>
+    <a routerLink="/client/settings" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-keyboard-outline"></i>
+      <span> Settings</span>
     </a>
-  <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-    <i class="fa fa-fw fa-dashboard"></i>
-    <span>Chat with support</span>
+  <a routerLink="/client/chat" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <i class="mdi mdi-chat"></i>
+    <span> Chat with support</span>
   </a>
-  <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-    <i class="fa fa-fw fa-dashboard"></i>
-    <span>Logout</span>
+      <a routerLink="/client/packages" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-package-variant-closed"></i>
+      <span> Packages Manager</span>
+    </a>
+    <a routerLink="/client/users" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-account-group"></i>
+      <span> View users</span>
+    </a>
+    <a routerLink="/client/manager" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="mdi mdi-format-page-break"></i>
+      <span> Frontend management</span>
+    </a>
+  <a routerLink="/logout" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <i class="mdi mdi-login-variant"></i>
+    <span> Logout</span>
   </a>
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>Packages Manager</span>
-    </a>
-    <a routerLink="/client/dashboard/list" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>View users</span>
-    </a>
-    <a (click)="logout()" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>
-      <span>Logout</span>
-    </a>
   </div>
 </nav>
 
