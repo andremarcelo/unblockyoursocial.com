@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'Hiric';
+  title = 'unblockyoursocial.com | Automated Instagram Accounts Recovery';
+  public options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
 }
+
