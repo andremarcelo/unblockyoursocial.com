@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         this.user = new User();
         this.validatorClass = new CONST();
         console.log(this.authenticationService.currentUserValue, 'test');
-        if (this.authenticationService.currentUserValue) {
+        if (this.authenticationService.currentUserValue.token !== undefined) {
             this.router.navigate(['/client']);
         }
     }
