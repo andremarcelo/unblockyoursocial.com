@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from  './User';
 import { Observable } from  'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,15 @@ export class ApiService {
 
   PHP_API_SERVER = "http://127.0.0.1:8000";
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+
+    if (environment.production) {
+      this.PHP_API_SERVER  = 'https://unblockyoursocial.com/';
+    }
+    if (environment.dev) {
+      this.PHP_API_SERVER  = 'https://kl23j4pkj.unblockyoursocial.com/';
+    }
+  }
 
   userList(): Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.PHP_API_SERVER}/api/read.php`);
