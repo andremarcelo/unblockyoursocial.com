@@ -7,7 +7,7 @@ export  class  User {
     package: string;
     description: string;
     status : string;
-    data : string;
+    data : {  };
     token?: string;
     firstName: string;
     lastName: string;
