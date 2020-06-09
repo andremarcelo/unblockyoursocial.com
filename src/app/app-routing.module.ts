@@ -12,6 +12,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent  },
   { path: 'logout', component: LogoutComponent  },
   { path: 'register', component: RegisterComponent  },
+  { path: 'register/pck-3', component: RegisterComponent  },
+  { path: 'register/pck-2', component: RegisterComponent  },
+  { path: 'register/pck-1', component: RegisterComponent  },
   { path: 'password-forget', component: PasswordForgetComponent  },
   { path: '', pathMatch: 'full', redirectTo: '' }, // see redirect not found page
 
