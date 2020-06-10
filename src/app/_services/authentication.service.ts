@@ -33,6 +33,25 @@ export class AuthenticationService {
             }));
     }
 
+    /*firstname
+    lastname
+    email
+    password
+    rpassword
+    customControlInline*/
+    register(firstname: string, lastname: string, email: string, password: string, rpassword: string, customControlInline: string ) {
+        return this.http.post<any>(`${environment.apiUrl}/register`, { firstname, lastname, email, password, rpassword, customControlInline })
+            .pipe(map(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                if (user !==null && user.status!=="error") {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                    return user;
+                }
+                return null;
+            }));
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

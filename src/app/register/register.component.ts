@@ -89,9 +89,12 @@ export class RegisterComponent implements OnInit {
             this.user.lastName =  this.formdata.get('lastname').value;
             this.user.email =  this.formdata.get('email').value;
             this.user.password =  this.formdata.get('password').value;
-
+            this.user.rpassword =  this.formdata.get('rpassword').value;
+            this.user.password =  this.formdata.get('rpassword').value;
+            this.user.customControlInline =  this.formdata.get('customControlInline').value;
             console.log(  this.user);
-            this.authenticationService.login(this.user.email , this.user.password ).subscribe((user:User) => {
+            this.authenticationService.register(   this.user.firstName,   this.user.lastName,
+                this.user.email, this.user.password, this.user.rpassword,  this.user.customControlInline).subscribe((user:User) => {
                 this.user = user;
                 if (this.user!==null && this.user.status  !== 'error') {
                     this.router.navigate(['client']).then();
