@@ -11,5 +11,7 @@ export  class  User {
     token?: string;
     firstName: string;
     lastName: string;
+    rpassword: string;
+    customControlInline: string;
 
 }
