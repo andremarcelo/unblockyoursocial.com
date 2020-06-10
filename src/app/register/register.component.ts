@@ -6,7 +6,6 @@ import {AlertService} from '../_alert';
 import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from "../_services";
-
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
@@ -16,6 +15,7 @@ export class RegisterComponent implements OnInit {
     formdata;
     user:  User;
     validatorClass: CONST;
+
     public options = {
         autoClose: true,
         keepAfterRouteChange: false
@@ -34,14 +34,12 @@ export class RegisterComponent implements OnInit {
         document.body.classList.add('bg-account-pages');
         document.body.classList.add('py-4');
         document.body.classList.add('py-sm-0');
-
         this.formdata = new FormGroup({
             email: new FormControl("", Validators.compose([
                 Validators.required,
                 Validators.pattern("[^ @]*@[^ @]*")
             ])),
             password: new FormControl("", this.passwordvalidation),
-            rpassword: new FormControl("", this.passwordvalidation),
             firstname: new FormControl("", Validators.compose([
                 Validators.required,
                 Validators.pattern("[a-zA-Z ]*")
@@ -51,18 +49,31 @@ export class RegisterComponent implements OnInit {
                 Validators.pattern("[a-zA-Z ]*")
             ])),
             customControlInline: new FormControl("", Validators.compose([
-                Validators.required
+                Validators.required,
+                Validators.pattern('true')
             ])),
+            rpassword: new FormControl('', [
+                Validators.required,
+                Validators.minLength(6),
+                Validators.maxLength(16),
+            ]),
 
-        });
+        }, this.pwdMatchValidator);
     }
 
-
     passwordvalidation(formcontrol) {
+
         if (formcontrol.value.length < 5) {
             return {"password": true};
         }
     }
+    pwdMatchValidator(frm: FormGroup) {
+        return frm.get('password').value === frm.get('rpassword').value
+            ? null : {'mismatch': true};
+    }
+
+    get password() { return this.formdata.get('password'); }
+    get confirm_password() { return this.formdata.get('rpassword'); }
 
     onClickSubmit(data) {
         console.log(this.formdata);

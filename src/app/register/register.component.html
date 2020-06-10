@@ -42,13 +42,16 @@
                                         <div class="form-group">
                                             <label for="rpassword">Repeat Password</label>
                                             <input type="password" class="form-control" id="rpassword" placeholder="Enter password" formControlName = "rpassword">
-                                            <div *ngIf="formdata.controls.rpassword.errors && formdata.controls.rpassword.touched" class="error">Passwords is not the same</div>
+                                            <div *ngIf="!formdata.hasError('mismatch') && formdata.controls.rpassword.errors && formdata.controls.rpassword.touched" class="error">Confirm the password is required</div>
+                                            <div *ngIf="formdata.hasError('mismatch')"  class="error">  Passwords do not match</div>
                                         </div>
 
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customControlInline"  formControlName = "customControlInline">
                                             <label class="custom-control-label" for="customControlInline">Confirm terms & condictions</label>
-                                            <div *ngIf="formdata.controls.customControlInline.errors && formdata.controls.customControlInline.touched" class="error">Please Confirm terms & condictions</div>
+                                            <div *ngIf="formdata.controls.customControlInline.errors && formdata.controls.customControlInline.touched" class="error">
+                                                Please confirm the terms and condictions
+                                            </div>
                                         </div>
 
                                         <div class="mt-3">
