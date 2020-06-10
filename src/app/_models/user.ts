@@ -13,5 +13,5 @@ export  class  User {
     lastName: string;
     rpassword: string;
     customControlInline: string;
-
+    is_confirmed : string;
 }

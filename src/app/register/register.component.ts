@@ -90,15 +90,21 @@ export class RegisterComponent implements OnInit {
             this.user.email =  this.formdata.get('email').value;
             this.user.password =  this.formdata.get('password').value;
             this.user.rpassword =  this.formdata.get('rpassword').value;
-            this.user.password =  this.formdata.get('rpassword').value;
-            this.user.customControlInline =  this.formdata.get('customControlInline').value;
+
             console.log(  this.user);
-            this.authenticationService.register(   this.user.firstName,   this.user.lastName,
-                this.user.email, this.user.password, this.user.rpassword,  this.user.customControlInline).subscribe((user:User) => {
+            this.authenticationService.register(   this.user.firstName,   this.user.lastName,  this.user.email, this.user.password, this.user.rpassword).subscribe((user:User) => {
                 this.user = user;
-                if (this.user!==null && this.user.status  !== 'error') {
-                    this.router.navigate(['client']).then();
-                } else {
+                if (this.user!==null && this.user.status  == 'email-exists') {
+                    this.alertService.error('The email  is register\n', this.options);
+                } else if(this.user!==null && this.user.status  == 'success') {
+                    this.alertService.success('Please check your email box.\n', this.options);
+                    setTimeout(() =>
+                        {
+                            this.router.navigate(['login']).then();
+                        },
+                        2000);
+                }
+                else {
                     this.alertService.error('Login error\n', this.options);
                 }
             });

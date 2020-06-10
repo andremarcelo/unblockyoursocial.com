@@ -16,15 +16,24 @@ class AuthController extends Controller
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('LaraPassport')->accessToken;
-            $success['name'] = $user->name;
-            $success['email'] = $user->email;
-            $success['role'] = $user->role;
-            $success['package'] = $user->package;
-            $success['description'] = $user->description;
+            if($user->is_confirmed) {
+                $success['token'] =  $user->createToken('LaraPassport')->accessToken;
+                $success['firstname'] = $user->firstname;
+                $success['lastname'] = $user->lastname;
+                $success['email'] = $user->email;
+                $success['role'] = $user->role;
+                $success['package'] = $user->package;
+                $success['description'] = $user->description;
+                $success['is_confirmed'] = $user->is_confirmed;
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $success
+                ]);
+            }
             return response()->json([
-                'status' => 'success',
-                'data' => $success
+                'status' => 'error',
+                'data' => 'Verify your email. Thank you.',
+                'is_confirmed' => $user->is_confirmed
             ]);
         } else {
             return response()->json([
@@ -49,25 +58,38 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'lastname' => 'required',
+            'firstname' => 'required',
             'email' => 'required|email',
             'password' => 'required',
             //'package' => 'required',
-            'role' => 'required',
+            //'role' => 'required',
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()]);
+
         }
-        $postArray = $request->all();
-        $postArray['password'] = bcrypt($postArray['password']);
-        $postArray['package'] =  empty($postArray['package']) ? 'NOT_SELECT' : $postArray['package'] ;
-        $postArray['role'] =  empty($postArray['role']) ? 'USER' : 'ADMIN';
-        $user = User::create($postArray);
-        $success['token'] =  $user->createToken('LaraPassport')->accessToken;
-        $success['name'] =  $user->name;
-        $success['package'] =  empty($user->package) ? 'NOT_SELECT' : $user->package ;
-        $success['role'] =  empty($user->role) ? 'USER' : 'ADMIN';
+        try {
+            $postArray = $request->all();
+            $postArray['password'] = bcrypt($postArray['password']);
+            $postArray['package'] =  empty($postArray['package']) ? 'NOT_SELECT' : $postArray['package'] ;
+            $postArray['role'] =  empty($postArray['role']) ? 'USER' : 'ADMIN';
+            $user = User::create($postArray);
+            $success['token'] =  $user->createToken('LaraPassport')->accessToken;
+            $success['name'] =  $user->name;
+            $success['firstname'] =  $user->firstname;
+            $success['lastname'] =  $user->lastname;
+            $success['is_confirmed'] = $user->is_confirmed;
+            $success['package'] =  empty($user->package) ? 'NOT_SELECT' : $user->package ;
+            $success['role'] =  empty($user->role) ? 'USER' : 'ADMIN';
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json([
+                'status' => 'email-exists',
+                'data' => "The email  is register",
+            ]);
+        }
+
         return response()->json([
             'status' => 'success',
             'data' => $success,

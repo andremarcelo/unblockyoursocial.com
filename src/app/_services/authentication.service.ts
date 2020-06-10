@@ -29,7 +29,7 @@ export class AuthenticationService {
                     this.currentUserSubject.next(user);
                     return user;
                 }
-                return null;
+                return user;
             }));
     }
 
@@ -39,13 +39,12 @@ export class AuthenticationService {
     password
     rpassword
     customControlInline*/
-    register(firstname: string, lastname: string, email: string, password: string, rpassword: string, customControlInline: string ) {
-        return this.http.post<any>(`${environment.apiUrl}/register`, { firstname, lastname, email, password, rpassword, customControlInline })
+    register(firstname: string, lastname: string, email: string, password: string, c_password: string ) {
+        return this.http.post<any>(`${environment.apiUrl}/register`, { firstname, lastname, email, password, c_password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
+                console.log(user);
                 if (user !==null && user.status!=="error") {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.currentUserSubject.next(user);
                     return user;
                 }
                 return null;
