@@ -15,33 +15,44 @@
                                     <h3 class="font-weight-bold"><a routerLink="/" class="text-dark text-uppercase account-pages-logo"><i class="mdi mdi-alien"></i>unblockyoursocial.com</a></h3>
                                     <p class="text-muted">Sign up for a new Account</p>
                                 </div>
+                                <alert></alert>
                                 <div class="p-3">
-                                    <form>
+                                    <form [formGroup] = "formdata" (ngSubmit) ="onClickSubmit(formdata.value)">
                                         <div class="form-group">
                                             <label for="firstname">First Name</label>
-                                            <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                                            <input type="text" class="form-control" id="firstname" placeholder="First Name"  formControlName = "firstname">
+                                            <div *ngIf="formdata.controls.firstname.errors && formdata.controls.firstname.touched" class="error">First is not valid</div>
                                         </div>
                                         <div class="form-group">
                                             <label for="lastname">Last Name</label>
-                                            <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                                            <input type="text" class="form-control" id="lastname" placeholder="Last Name" formControlName = "lastname">
+                                            <div *ngIf="formdata.controls.lastname.errors && formdata.controls.lastname.touched" class="error">Last Name is not valid</div>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="password" class="form-control" id="email" placeholder="Enter Email">
+                                            <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName = "email">
+                                            <div *ngIf="formdata.controls.email.errors && formdata.controls.email.touched" class="error">Email not valid</div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="userpassword">Password</label>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" placeholder="Enter password" formControlName = "password">
+                                            <div *ngIf="formdata.controls.password.errors && formdata.controls.password.touched" class="error">Password is not valid</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rpassword">Repeat Password</label>
+                                            <input type="password" class="form-control" id="rpassword" placeholder="Enter password" formControlName = "rpassword">
+                                            <div *ngIf="formdata.controls.rpassword.errors && formdata.controls.rpassword.touched" class="error">Passwords is not the same</div>
                                         </div>
 
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                            <input type="checkbox" class="custom-control-input" id="customControlInline"  formControlName = "customControlInline">
                                             <label class="custom-control-label" for="customControlInline">Confirm terms & condictions</label>
+                                            <div *ngIf="formdata.controls.customControlInline.errors && formdata.controls.customControlInline.touched" class="error">Please Confirm terms & condictions</div>
                                         </div>
 
                                         <div class="mt-3">
-                                            <button type="button" class="btn btn-custom btn-block">Sign in</button>
+                                            <button type="submit" class="btn btn-custom btn-block">Register</button>
                                         </div>
 
                                         <div class="mt-4 mb-0 text-center">

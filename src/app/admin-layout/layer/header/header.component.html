@@ -8,30 +8,22 @@
     <div _ngcontent-owk-c2="" class="navbar-brand"><span class="mdi mdi-cog-counterclockwise"></span>
         <img src="/assets/images/Unbockyoursocial_White.png" alt="logo" width="300" height="40" />
     </div>
-
-    <div class="collapse navbar-collapse">
-        <ul class="saga mt-2 mt-lg-0 navbar-nav ml-auto" id="saga">
-
-            <li class="nav-item">
-                <a class="nav-link notynoty" id="openNotifier" href="javascript:;">
-
-                    <i class="fa fa-bell text-white"></i>
-                    <span class="text-danger badge">3</span></a>
-
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link msgmsg" href="javascript:;"><span class="label label-warning badge"></span>
-                    <i class="fa fa-envelope text-white"></i></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link linklink text-white" href="javascript:;"><i
-                        class="fa fa-user"></i>  {{currentUser.data.name}}</a>
-            </li>
-        </ul>
-    </div>
-
+    <ul class="navbar-nav" *ngIf="isLoggedIn && !isLoading">
+        <li class="nav-link waves-light dropdown avatar p-0 avatar-dropdown" mdbDropdown>
+            <a mdbDropdownToggle mdbWavesEffect type="button" class="nav-link waves-light" mdbWavesEffect>
+                <img *ngIf="user.photoUrl" src="{{ user.photoUrl }}" height="35" width="35" class="rounded-circle z-depth-0" alt="avatar image">
+            </a>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-primary" role="menu">
+                <div *ngIf="user.displayName" class="text-center py-2 px-2">{{ user.displayName }}</div>
+                <div *ngIf="!user.displayName" class="text-center py-2 px-2">Anonymous user</div>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item text-center waves-light" mdbWavesEffect (click)="onLogout(); navbar.hide()">Logout</a>
+            </div>
+        </li>
+        <li class="nav-item waves-light logout-button">
+            <a class="nav-link waves-light" mdbWavesEffect (click)="onLogout(); navbar.hide()">Logout</a>
+        </li>
+    </ul>
 </nav>
 
 
