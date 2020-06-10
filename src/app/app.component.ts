@@ -24,11 +24,14 @@ export class AppComponent {
       private authenticationService: AuthenticationService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    if(this.authenticationService!== null) {
+      this.router.navigate(['/client/dashboard']);
+    }
   }
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }
 
